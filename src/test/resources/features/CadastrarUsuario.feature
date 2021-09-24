@@ -5,15 +5,15 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroValido1
   Cenario: cadastrar usuario com dados validos e telefone no input phone
-    Quando informar email "emailvalidotesteteste@validoemailvalido.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
-    E informar nome "Fulana"
-    E informar sobrenome "da Silva"
-    E informar senha "12345"
-    E informar endereco "tal street, 1234"
-    E informar cidade "New York"
-    E informar zipcode "12345"
-    E informar phone "123412345"
+    E informar nome aleatorio
+    E informar sobrenome aleatorio
+    E informar senha valida aleatoria
+    E informar endereco aleatorio
+    E informar cidade aleatorio
+    E informar zipcode valido aleatorio
+    E informar phone aleatorio
     E selecionar pais "United States"
     E selecionar um estado aleatorio
     E clicar register
@@ -21,7 +21,7 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroValido2
   Cenario: cadastrar usuario com dados validos e telefone no input mobile-phone
-    Quando informar email "testetesteemailvalidoteste@validoparateste.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
     E informar nome "Nome"
     E informar sobrenome "da Silva"
@@ -55,7 +55,7 @@ Funcionalidade: Cadastrar Usuario
 
   @CadastroSemNome
   Cenario: cadastrar usuario sem informar nome
-    Quando informar email "kjhfgyt6@valido.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
     E informar nome ""
     E informar sobrenome "Testatesta"
@@ -71,7 +71,7 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroSemSobrenome
   Cenario: cadastrar usuario sem informar sobrenome
-    Quando informar email "asfdkj1234@valido.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
     E informar nome "Nome"
     E informar sobrenome ""
@@ -87,7 +87,7 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroSobrenomeNulo
   Cenario: cadastrar usuario com sobrenome contendo apenas um espaco em branco
-    Quando informar email "lfkguh9emailvalido@valido.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
     E informar nome "Nome"
     E informar sobrenome " "
@@ -103,7 +103,7 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroSenhaForaPadrao
   Cenario: cadastrar usuario com senha contendo menos que o minimo de caracteres (um caracter a menos)
-    Quando informar email "hhgffs@valido.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
     E informar nome "Nome"
     E informar sobrenome "Umsobrenome"
@@ -119,7 +119,7 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroSemSenha
   Cenario: cadastrar usuario sem informar senha
-    Quando informar email "dhshytdt@valido.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
     E informar nome "Nome"
     E informar sobrenome "Umsobrenome"
@@ -135,7 +135,7 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroSemEndereco
   Cenario: cadastrar usuario sem informar endereco
-    Quando informar email "kkkfjhgh@valido.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
     E informar nome "Nome"
     E informar sobrenome "Umsobrenome"
@@ -151,7 +151,7 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroSemCidade
   Cenario: cadastrar usuario sem informar cidade
-    Quando informar email "bvnjdjo@valido.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
     E informar nome "Nome"
     E informar sobrenome "Umsobrenome"
@@ -167,7 +167,7 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroSemZipCode
   Cenario: cadastrar usuario sem informar zipcode
-    Quando informar email "fhdfdfdg@valido.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
     E informar nome "Nome"
     E informar sobrenome "Umsobrenome"
@@ -183,7 +183,7 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroZipCodeMaior
   Cenario: cadastrar usuario informando zipcode com mais digitos do que o definido (um digito a mais)
-    Quando informar email "emailemailemail@valido.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
     E informar nome "Nome"
     E informar sobrenome "Umsobrenome"
@@ -199,7 +199,7 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroZipCodeMenor
   Cenario: cadastrar usuario informando zipcode com menos digitos do que o definido (um digito a menos)
-    Quando informar email "emaildousuario@valido.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
     E informar nome "Nome"
     E informar sobrenome "Umsobrenome"
@@ -215,7 +215,7 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroZipCodeForaPadrao
   Cenario: cadastrar usuario informando zipcode com caractere que nao seja numero
-    Quando informar email "maisoutroemailvalido@valido.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
     E informar nome "Nome"
     E informar sobrenome "Umsobrenome"
@@ -231,7 +231,7 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroSemTelefone
   Cenario: cadastrar usuario sem informar telefone
-    Quando informar email "outroemailvalido@valido.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
     E informar nome "Nome"
     E informar sobrenome "Umsobrenome"
@@ -246,7 +246,7 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroTelefoneForaPadrao
   Cenario: cadastrar usuario informando telefone com letras
-    Quando informar email "validovalidovalido@valido.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
     E informar nome "Nome"
     E informar sobrenome "Umsobrenome"
@@ -262,7 +262,7 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroSemPais
   Cenario: cadastrar usuario selecionando a opcao "-" no pais
-    Quando informar email "hdgbnnmp@valido.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
     E informar nome "Nome"
     E informar sobrenome "Umsobrenome"
@@ -278,7 +278,7 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroSemEstado
   Cenario: cadastrar usuario sem selecionar estado
-    Quando informar email "vbmhjh@valido.com"
+    Quando informar email aleatorio
     E acionar o botao criar conta
     E informar nome "Nome"
     E informar sobrenome "Umsobrenome"

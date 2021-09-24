@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Utils {
@@ -26,8 +27,10 @@ public class Utils {
         return PageFactory.initElements(driver, classe); //instancia os elementos pra poder usar
     }
 
+
     public static void capturarTela(Scenario scenario) { //metodo para screenshots
         final byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
         scenario.embed(screenshot, "image/png");
     }
+
 }
