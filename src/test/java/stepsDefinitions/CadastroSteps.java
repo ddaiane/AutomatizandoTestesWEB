@@ -2,11 +2,10 @@ package stepsDefinitions;
 import static utils.Utils.*;
 import static utils.GeraDadosAleatorios.*;
 
+import io.cucumber.java.pt.*;
 import org.openqa.selenium.By;
 import pageObjects.CreateAccountPage;
 
-import io.cucumber.java.pt.Entao;
-import io.cucumber.java.pt.Quando;
 import static org.junit.Assert.assertTrue;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -22,6 +21,7 @@ public class CadastroSteps {
 
 
     //steps com dados random
+
     @Quando("informar nome aleatorio")
     public void informarNomeAleatorio() {
         int qtdCaracteres = random.nextInt(15) + 5; //nome aleatorio com pelo menos 5 caracteres
@@ -47,22 +47,40 @@ public class CadastroSteps {
     }
 
     @Quando("informar senha valida aleatoria")
-    public void informarSenhaValidaAleatoria() {
+    public void informarSenhaValidaAleatoria() { //senha aleatoria com quantidade de caracteres variavel mas sempre acima de 5
         int qtdCaracteres = random.nextInt(15) + 5; //string numerica aleatoria pra senha com pelo menos 5 caracteres
         String senha = stringAleatoria(2, qtdCaracteres);
         Na(CreateAccountPage.class).informaSenha(senha);
     }
 
-    @Quando("informar zipcode valido aleatorio")
-    public void informarZipcodeValidoAleatorio() {
-        String zip = stringAleatoria(1, 5); //string numerica aleatoria de 5 caracteres para zipcode valido
+    @E("informar senha aleatoria com {int} digitos")
+    public void informarSenhaAleatoriaComDigitos(int qtdCaracteres) { //teste com quantidades exatas de digitos na senha para testar senhas fora padrao
+        String senha = stringAleatoria(2, qtdCaracteres);
+        Na(CreateAccountPage.class).informaSenha(senha);
+    }
+
+    @E("informar zipcode com {int} caracteres")
+    public void informarZipcodeComCaracteres(int qtdCaracteres) {
+        String zip = stringAleatoria(1, qtdCaracteres); //string numerica aleatoria de 5 caracteres para zipcode valido
         Na(CreateAccountPage.class).informaZipcode(zip);
     }
 
     @Quando("informar phone aleatorio")
-    public void informarPhoneAleatorio() {
+    public void informarPhoneAleatorio() { //teste com os dois campos de telefone possiveis
         String phone = stringAleatoria(1, 9); //string numerica aleatoria de 9 caracteres para telefone
         Na(CreateAccountPage.class).informaTelefone1(phone);
+    }
+
+    @E("informar mobile-phone aleatorio")
+    public void informarMobilePhoneAleatorio() { //teste com os dois campos de telefone possiveis
+        String phone = stringAleatoria(1, 9); //string numerica aleatoria de 9 caracteres para telefone
+        Na(CreateAccountPage.class).informaTelefone2(phone);
+    }
+
+    @Quando("selecionar um estado aleatorio")
+    public void selecionarUmEstadoAleatorio() {
+        int randomNumber = random.nextInt(51) + 1; //recebe um numero aleatorio entre 1 e 51 para variar o estado selecionado
+        Na(CreateAccountPage.class).selecionaEstado(randomNumber);
     }
 
     @Quando("informar endereco aleatorio")
@@ -72,50 +90,15 @@ public class CadastroSteps {
     }
 
 
-
-
-
-    @Quando("informar nome {string}")
-    public void informarNome(String nome) {
-        this.nomeCadastro = nome;
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); //aguarda alguns segundos pois site lento
-        Na(CreateAccountPage.class).informaNome(nome);
-    }
-
-    @Quando("informar sobrenome {string}")
-    public void informarSobrenome(String sobrenome) {
-        this.sobrenomeCadastro = sobrenome;
-        Na(CreateAccountPage.class).informaSobrenome(sobrenome);
-    }
-
-    @Quando("informar senha {string}")
-    public void informarSenha(String senha) {
-        Na(CreateAccountPage.class).informaSenha(senha);
-    }
-
-    @Quando("informar endereco {string}")
-    public void informarEndereco(String endereco) {
-        Na(CreateAccountPage.class).informaEndereco(endereco);
-    }
-
-    @Quando("informar cidade {string}")
-    public void informarCidade(String cidade) {
-        Na(CreateAccountPage.class).informaCidade(cidade);
-    }
-
-    @Quando("informar zipcode {string}")
+    //steps com dados nao aleatorios para testes mais especificos
+    @Quando("informar zipcode {string}") //para informar testes de valores especificos como valores com letras no meio
     public void informarZipcode(String zip) {
         Na(CreateAccountPage.class).informaZipcode(zip);
     }
 
-    @Quando("informar mobile-phone {string}")
+    @Quando("informar mobile-phone {string}") //para informar testes de valores especificos como valores com letras no meio
     public void informarMobilePhone(String telefone) {
         Na(CreateAccountPage.class).informaTelefone1(telefone);
-    }
-
-    @Quando("informar phone {string}")
-    public void informarPhone(String telefone) {
-        Na(CreateAccountPage.class).informaTelefone2(telefone);
     }
 
     @Quando("selecionar pais {string}")
@@ -123,16 +106,19 @@ public class CadastroSteps {
         Na(CreateAccountPage.class).selecionaPais(pais);
     }
 
-    @Quando("selecionar um estado aleatorio")
-    public void selecionarUmEstadoAleatorio() {
-        int randomNumber = random.nextInt(51) + 1; //recebe um numero aleatorio entre 1 e 51 para variar o estado selecionado
-        Na(CreateAccountPage.class).selecionaEstado(randomNumber);
+
+    @Mas("nao informar campo {string}")
+    public void naoInformarCampo(String campo) {
+        System.out.println("Campo invalido no teste atual: " + campo);
     }
 
     @Quando("clicar register")
     public void clicarRegister() {
         Na(CreateAccountPage.class).acionaRegister();
     }
+
+
+
 
     @Entao("aparece logado o usuario")
     public void apareceLogadoOUsuario() {
@@ -146,6 +132,5 @@ public class CadastroSteps {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); //aguarda alguns segundos pois site lento
         assertTrue(driver.findElement(By.xpath("//div[@class='alert alert-danger']//p[contains(text(), 'error')]")).isDisplayed());
     }
-
 
 }

@@ -9,7 +9,6 @@ import org.junit.runner.RunWith;
         plugin = {"pretty", "html:target/cucumber-report"}, //relatorio e screenshots na pasta target
         features = "src/test/resources/features",
         glue = "stepsDefinitions",
-        tags = "@cadastroValido1",
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         dryRun = false
 )

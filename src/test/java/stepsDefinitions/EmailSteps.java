@@ -1,5 +1,8 @@
 package stepsDefinitions;
 import static utils.Utils.*;
+
+import io.cucumber.java.pt.Dado;
+import io.cucumber.java.pt.E;
 import pageObjects.SignInPage;
 
 import org.openqa.selenium.By;
@@ -14,8 +17,8 @@ public class EmailSteps {
     //numero random para gerar email diferente a cada vez
     Random random = new Random();
 
-    @Quando("informar email aleatorio")
-    public void informarEmailAleatorio() {
+    @Dado("que informou email aleatorio valido")
+    public void queInformouEmailAleatorioValido() { //metodo que envia emails validos aleatorios
         int emailRandom = random.nextInt(200);
         int dominioRandom = random.nextInt(200);
         String email = "emailValido" + emailRandom + "@dominio" + dominioRandom + ".com";
@@ -27,11 +30,11 @@ public class EmailSteps {
         Na(SignInPage.class).informarEmail(email);
     }
 
-    @Quando("acionar o botao criar conta")
-    public void acionarOBotaoCriarConta() {
+
+    @E("aciona o botao criar conta")
+    public void acionaOBotaoCriarConta() {
         Na(SignInPage.class).acionarBotaoCriarConta();
     }
-
 
     @Entao("sistema notifica email invalido")
     public void sistemaNotificaEmailInvalido() {
@@ -39,4 +42,6 @@ public class EmailSteps {
         assertTrue(driver.findElement(By.xpath(
                 "//div[@id='create_account_error']//li[contains(text(), 'Invalid email address')]")).isDisplayed());
     }
+
+
 }

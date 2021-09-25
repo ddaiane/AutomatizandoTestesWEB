@@ -3,16 +3,18 @@
 @cadastros
 Funcionalidade: Cadastrar Usuario
 
+  Contexto:
+    Dado que informou email aleatorio valido
+    E aciona o botao criar conta
+
   @cadastroValido1
   Cenario: cadastrar usuario com dados validos e telefone no input phone
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome aleatorio
+    Quando informar nome aleatorio
     E informar sobrenome aleatorio
     E informar senha valida aleatoria
     E informar endereco aleatorio
     E informar cidade aleatorio
-    E informar zipcode valido aleatorio
+    E informar zipcode com 5 caracteres
     E informar phone aleatorio
     E selecionar pais "United States"
     E selecionar um estado aleatorio
@@ -21,97 +23,57 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroValido2
   Cenario: cadastrar usuario com dados validos e telefone no input mobile-phone
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome "Nome"
-    E informar sobrenome "da Silva"
-    E informar senha "1a2b3c"
-    E informar endereco "rua tal, 1234"
-    E informar cidade "São Paulo"
-    E informar zipcode "01234"
-    E informar mobile-phone "565652345"
+    Quando informar nome aleatorio
+    E informar sobrenome aleatorio
+    E informar senha valida aleatoria
+    E informar endereco aleatorio
+    E informar cidade aleatorio
+    E informar zipcode com 5 caracteres
+    E informar mobile-phone aleatorio
     E selecionar pais "United States"
     E selecionar um estado aleatorio
     E clicar register
     Entao aparece logado o usuario
 
-  @cadastroEmailInvalido1
-  Cenario: cadastrar usuario com email sem arroba
-    Quando informar email "teste.com"
-    E acionar o botao criar conta
-    Entao sistema notifica email invalido
-
-  @cadastroEmailInvalido2
-  Cenario: cadastrar usuario com email com dominio fora do padrao
-    Quando informar email "teste@com"
-    E acionar o botao criar conta
-    Entao sistema notifica email invalido
-
-  @cadastroEmailInvalido3
-  Cenario: cadastrar usuario com email fora do padrao
-    Quando informar email "@teste.com"
-    E acionar o botao criar conta
-    Entao sistema notifica email invalido
 
   @CadastroSemNome
   Cenario: cadastrar usuario sem informar nome
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome ""
-    E informar sobrenome "Testatesta"
-    E informar senha "12345ab"
-    E informar endereco "tal street, 1234"
-    E informar cidade "São Paulo"
-    E informar zipcode "12345"
-    E informar phone "123412345"
+    Quando informar sobrenome aleatorio
+    E informar senha valida aleatoria
+    E informar endereco aleatorio
+    E informar cidade aleatorio
+    E informar zipcode com 5 caracteres
+    E informar mobile-phone aleatorio
     E selecionar pais "United States"
     E selecionar um estado aleatorio
+    Mas nao informar campo "nome"
     E clicar register
     Entao sistema notifica falta dados
 
   @cadastroSemSobrenome
   Cenario: cadastrar usuario sem informar sobrenome
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome "Nome"
-    E informar sobrenome ""
-    E informar senha "1a2b3c"
-    E informar endereco "rua tal, 1234"
-    E informar cidade "São Paulo"
-    E informar zipcode "01234"
-    E informar mobile-phone "565652345"
+    Quando informar nome aleatorio
+    E informar senha valida aleatoria
+    E informar endereco aleatorio
+    E informar cidade aleatorio
+    E informar zipcode com 5 caracteres
+    E informar mobile-phone aleatorio
     E selecionar pais "United States"
     E selecionar um estado aleatorio
+    Mas nao informar campo "nome"
     E clicar register
     Entao sistema notifica falta dados
-
-  @cadastroSobrenomeNulo
-  Cenario: cadastrar usuario com sobrenome contendo apenas um espaco em branco
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome "Nome"
-    E informar sobrenome " "
-    E informar senha "1a2b3c"
-    E informar endereco "rua tal, 1234"
-    E informar cidade "São Paulo"
-    E informar zipcode "01234"
-    E informar mobile-phone "565652345"
-    E selecionar pais "United States"
-    E selecionar um estado aleatorio
-    E clicar register
-    Entao sistema notifica falta dados
+    
 
   @cadastroSenhaForaPadrao
   Cenario: cadastrar usuario com senha contendo menos que o minimo de caracteres (um caracter a menos)
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome "Nome"
-    E informar sobrenome "Umsobrenome"
-    E informar senha "1234"
-    E informar endereco "rua tal, 1234"
-    E informar cidade "São Paulo"
-    E informar zipcode "01234"
-    E informar mobile-phone "565652345"
+    Quando informar nome aleatorio
+    E informar sobrenome aleatorio
+    E informar senha aleatoria com 4 digitos
+    E informar endereco aleatorio
+    E informar cidade aleatorio
+    E informar zipcode com 5 caracteres
+    E informar mobile-phone aleatorio
     E selecionar pais "United States"
     E selecionar um estado aleatorio
     E clicar register
@@ -119,79 +81,69 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroSemSenha
   Cenario: cadastrar usuario sem informar senha
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome "Nome"
-    E informar sobrenome "Umsobrenome"
-    E informar senha ""
-    E informar endereco "rua tal, 1234"
-    E informar cidade "São Paulo"
-    E informar zipcode "01234"
-    E informar mobile-phone "565652345"
+    Quando informar nome aleatorio
+    E informar sobrenome aleatorio
+    E informar endereco aleatorio
+    E informar cidade aleatorio
+    E informar zipcode com 5 caracteres
+    E informar phone aleatorio
     E selecionar pais "United States"
     E selecionar um estado aleatorio
+    Mas nao informar campo "senha"
     E clicar register
     Entao sistema notifica falta dados
 
   @cadastroSemEndereco
   Cenario: cadastrar usuario sem informar endereco
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome "Nome"
-    E informar sobrenome "Umsobrenome"
-    E informar senha "123456"
-    E informar endereco ""
-    E informar cidade "São Paulo"
-    E informar zipcode "01234"
-    E informar mobile-phone "565652345"
+    Quando informar nome aleatorio
+    E informar sobrenome aleatorio
+    E informar senha valida aleatoria
+    E informar cidade aleatorio
+    E informar zipcode com 5 caracteres
+    E informar phone aleatorio
     E selecionar pais "United States"
     E selecionar um estado aleatorio
+    Mas nao informar campo "endereco"
     E clicar register
     Entao sistema notifica falta dados
 
   @cadastroSemCidade
   Cenario: cadastrar usuario sem informar cidade
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome "Nome"
-    E informar sobrenome "Umsobrenome"
-    E informar senha "123456"
-    E informar endereco "Rua tal, 3456"
-    E informar cidade ""
-    E informar zipcode "01234"
-    E informar mobile-phone "565652345"
+    Quando informar nome aleatorio
+    E informar sobrenome aleatorio
+    E informar senha valida aleatoria
+    E informar endereco aleatorio
+    E informar zipcode com 5 caracteres
+    E informar phone aleatorio
     E selecionar pais "United States"
     E selecionar um estado aleatorio
+    Mas nao informar campo "cidade"
     E clicar register
     Entao sistema notifica falta dados
 
   @cadastroSemZipCode
   Cenario: cadastrar usuario sem informar zipcode
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome "Nome"
-    E informar sobrenome "Umsobrenome"
-    E informar senha "123456"
-    E informar endereco "Rua tal, 3456"
-    E informar cidade "Rio de Janeiro"
-    E informar zipcode ""
-    E informar mobile-phone "565652345"
+    Quando informar nome aleatorio
+    E informar sobrenome aleatorio
+    E informar senha valida aleatoria
+    E informar endereco aleatorio
+    E informar cidade aleatorio
+    E informar phone aleatorio
     E selecionar pais "United States"
     E selecionar um estado aleatorio
+    Mas nao informar campo "zipcode"
     E clicar register
     Entao sistema notifica falta dados
 
   @cadastroZipCodeMaior
   Cenario: cadastrar usuario informando zipcode com mais digitos do que o definido (um digito a mais)
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome "Nome"
-    E informar sobrenome "Umsobrenome"
-    E informar senha "123456"
-    E informar endereco "Rua tal, 3456"
-    E informar cidade "Rio de Janeiro"
-    E informar zipcode "123456"
-    E informar mobile-phone "565652345"
+    Quando informar nome aleatorio
+    E informar sobrenome aleatorio
+    E informar senha valida aleatoria
+    E informar endereco aleatorio
+    E informar cidade aleatorio
+    E informar zipcode com 6 caracteres
+    E informar mobile-phone aleatorio
     E selecionar pais "United States"
     E selecionar um estado aleatorio
     E clicar register
@@ -199,31 +151,27 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroZipCodeMenor
   Cenario: cadastrar usuario informando zipcode com menos digitos do que o definido (um digito a menos)
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome "Nome"
-    E informar sobrenome "Umsobrenome"
-    E informar senha "123456"
-    E informar endereco "Rua tal, 3456"
-    E informar cidade "Rio de Janeiro"
-    E informar zipcode "1234"
-    E informar mobile-phone "565652345"
+    Quando informar nome aleatorio
+    E informar sobrenome aleatorio
+    E informar senha valida aleatoria
+    E informar endereco aleatorio
+    E informar cidade aleatorio
+    E informar zipcode com 4 caracteres
+    E informar mobile-phone aleatorio
     E selecionar pais "United States"
     E selecionar um estado aleatorio
     E clicar register
     Entao sistema notifica falta dados
 
   @cadastroZipCodeForaPadrao
-  Cenario: cadastrar usuario informando zipcode com caractere que nao seja numero
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome "Nome"
-    E informar sobrenome "Umsobrenome"
-    E informar senha "123456"
-    E informar endereco "Rua tal, 3456"
-    E informar cidade "Rio de Janeiro"
-    E informar zipcode "Z1234"
-    E informar mobile-phone "565652345"
+  Cenario: cadastrar usuario informando zipcode com extensao correta porem caractere que nao seja numero
+    Quando informar nome aleatorio
+    E informar sobrenome aleatorio
+    E informar senha valida aleatoria
+    E informar endereco aleatorio
+    E informar cidade aleatorio
+    E informar zipcode "B1234"
+    E informar mobile-phone aleatorio
     E selecionar pais "United States"
     E selecionar um estado aleatorio
     E clicar register
@@ -231,29 +179,26 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroSemTelefone
   Cenario: cadastrar usuario sem informar telefone
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome "Nome"
-    E informar sobrenome "Umsobrenome"
-    E informar senha "123456"
-    E informar endereco "Rua tal, 3456"
-    E informar cidade "Rio de Janeiro"
-    E informar zipcode "12345"
+    Quando informar nome aleatorio
+    E informar sobrenome aleatorio
+    E informar senha valida aleatoria
+    E informar endereco aleatorio
+    E informar cidade aleatorio
+    E informar zipcode com 5 caracteres
     E selecionar pais "United States"
     E selecionar um estado aleatorio
+    Mas nao informar campo "telefone"
     E clicar register
     Entao sistema notifica falta dados
 
   @cadastroTelefoneForaPadrao
   Cenario: cadastrar usuario informando telefone com letras
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome "Nome"
-    E informar sobrenome "Umsobrenome"
-    E informar senha "123456"
-    E informar endereco "Rua tal, 3456"
-    E informar cidade "Rio de Janeiro"
-    E informar zipcode "01234"
+    Quando informar nome aleatorio
+    E informar sobrenome aleatorio
+    E informar senha valida aleatoria
+    E informar endereco aleatorio
+    E informar cidade aleatorio
+    E informar zipcode com 5 caracteres
     E informar mobile-phone "abcdefg"
     E selecionar pais "United States"
     E selecionar um estado aleatorio
@@ -262,31 +207,28 @@ Funcionalidade: Cadastrar Usuario
 
   @cadastroSemPais
   Cenario: cadastrar usuario selecionando a opcao "-" no pais
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome "Nome"
-    E informar sobrenome "Umsobrenome"
-    E informar senha "123456"
-    E informar endereco "Rua tal, 3456"
-    E informar cidade "Rio de Janeiro"
-    E informar zipcode "Z1234"
-    E informar mobile-phone "565652345"
-    E selecionar um estado aleatorio
+    Quando informar nome aleatorio
+    E informar sobrenome aleatorio
+    E informar senha valida aleatoria
+    E informar endereco aleatorio
+    E informar cidade aleatorio
+    E informar zipcode com 5 caracteres
+    E informar phone aleatorio
     E selecionar pais "-"
+    E selecionar um estado aleatorio
     E clicar register
     Entao sistema notifica falta dados
 
   @cadastroSemEstado
   Cenario: cadastrar usuario sem selecionar estado
-    Quando informar email aleatorio
-    E acionar o botao criar conta
-    E informar nome "Nome"
-    E informar sobrenome "Umsobrenome"
-    E informar senha "123456"
-    E informar endereco "Rua tal, 3456"
-    E informar cidade "Rio de Janeiro"
-    E informar zipcode "01234"
-    E informar mobile-phone "565652345"
+    Quando informar nome aleatorio
+    E informar sobrenome aleatorio
+    E informar senha valida aleatoria
+    E informar endereco aleatorio
+    E informar cidade aleatorio
+    E informar zipcode com 5 caracteres
+    E informar phone aleatorio
     E selecionar pais "United States"
+    Mas nao informar campo "estado"
     E clicar register
     Entao sistema notifica falta dados
